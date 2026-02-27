@@ -5,10 +5,14 @@ import br.edu.ifba.busca.buscador.ResultadoBusca;
 
 public class BuscaBinaria implements Buscador{
 
+    private int passos = 0;
+
     @Override
-    public ResultadoBusca buscar(int[] vetor, int valor) {
+    public ResultadoBusca buscar(int[] vetor, int valor) {        
 
         ResultadoBusca resultado = ResultadoBusca.NAO_ENCONTRADO;
+
+        passos = 0;
 
         int fim = vetor.length - 1;
 
@@ -18,6 +22,7 @@ public class BuscaBinaria implements Buscador{
             int meio = 0;
 
             while (inicio <= fim) {
+                passos++;
                 meio = (inicio + fim) / 2;
 
                 if (vetor[meio] < valor) {
@@ -32,6 +37,11 @@ public class BuscaBinaria implements Buscador{
         }
 
         return resultado;
+    }
+
+    @Override
+    public int getTotalPassos() {
+        return passos;
     }
     
 }
