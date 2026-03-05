@@ -3,7 +3,7 @@ package br.edu.ifba.linear;
 
 public class App {
 
-    // Copleidade linear O(n), por que temos um loop que percorre o array de números uma única vez, realizando uma operação constante (soma) para cada elemento. Portanto, o tempo de execução cresce linearmente com o tamanho do array.
+    // Complexidade linear O(n), por que temos um loop que percorre o array de números uma única vez, realizando uma operação constante (soma) para cada elemento. Portanto, o tempo de execução cresce linearmente com o tamanho do array.
     private static int sonar(int[] numeros) {
         int suma = 0;
 
