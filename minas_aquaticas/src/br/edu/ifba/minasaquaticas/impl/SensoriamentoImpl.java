@@ -8,15 +8,14 @@ import br.edu.ifba.minasaquaticas.sensoriamento.Sensoriamento;
 
 public class SensoriamentoImpl implements Sensoriamento<Leitura> {
 
-    // Profundidade: mina ancorada, mas sofre variação por correntes e marés
     private static final int PROFUNDIDADE_NORMAL = 20; 
-    private static final int OCILACAO_MAXIMA_PROFUNDIDADE = 5; // pequena - mina ancorada 
+    private static final int OCILACAO_MAXIMA_PROFUNDIDADE = 5; 
 
-    // Proximidade: varia mais, pois objetos se aproximam/afastam constantemente
     private static final int PROXIMIDADE_NORMAL = 20; 
     private static final int OCILACAO_MAXIMA_PROXIMIDADE = 20; 
 
-    // O(N) — gera uma lista de leituras simuladas, cada leitura O(1)
+    // O(N)
+    // Pois é um loop simples que gera uma quantidade específica de leituras, onde N é a quantidade de leituras solicitada  
     @Override
     public List<Leitura> obterDados(int quantidade) {
         List<Leitura> leituras = new ArrayList<>();

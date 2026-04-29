@@ -11,24 +11,27 @@ public class OrdenadorImpl extends Ordenador<Leitura> {
         super(leituras, tipoOrdenacao);
     }
 
-    // O(N log N) — garante pior caso melhor que QuickSort
+    // O(N log N)
+    // Parace dois loops sim, mas na verdade é um processo de construção de heap (O(N)) seguido por N extrações do maior elemento (O(N log N))
+    // Se a entrada de dados aumentar, o tempo de ordenação crescerá significativamente, especialmente para grandes listas de leituras, devido ao O(N log N) do algoritmo de heap sort
     @Override
     public void ordenar() {
         int n = leituras.size();
 
-        // Fase 1: constrói o Max-Heap — O(N)
+        // O(N)
         for (int i = n / 2 - 1; i >= 0; i--) {
             heapify(n, i);
         }
 
-        // Fase 2: extrai elementos do heap um a um — O(N log N)
+        // O(N log N)
         for (int i = n - 1; i > 0; i--) {
-            trocar(0, i);        // move raiz (maior) para o final
-            heapify(i, 0);       // restaura o heap na parte restante
+            trocar(0, i);       
+            heapify(i, 0);       
         }
     }
 
-    // O(log N) — garante a propriedade do Max-Heap a partir do nó i
+    // O(log N)
+    // Pois a função heapify é chamada recursivamente para ajustar a posição de um elemento em uma estrutura de heap
     private void heapify(int tamanhoHeap, int i) {
         int maior = i;
         int filhoEsquerdo = 2 * i + 1;
@@ -44,11 +47,11 @@ public class OrdenadorImpl extends Ordenador<Leitura> {
 
         if (maior != i) {
             trocar(i, maior);
-            heapify(tamanhoHeap, maior); // O(log N)
+            heapify(tamanhoHeap, maior); 
         }
     }
 
-    // O(1) — centraliza a lógica de comparação por tipo
+    // O(1)
     private int comparar(int indexA, int indexB) {
         Leitura a = leituras.get(indexA);
         Leitura b = leituras.get(indexB);
